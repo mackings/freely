@@ -2,12 +2,13 @@ const express = require ("express");
 const app = express();
 const {v4: uuid } = require("uuid");
 const fs = require("fs/promises");
+require ("dotenv").config;
 
 app.use(express.urlencoded({extended:true}));
 app.use(express.json());
 
 app.get("/",function(req,res){
-    res.send("Server is up jarey");
+    res.send("Server Up");
 });
 
 
@@ -31,5 +32,5 @@ app.get("/names/:id",function(req,res){
 
 
 
-
-app.listen(3000);
+const port = process.env.PORT || 3000
+app.listen(port); 
