@@ -13,16 +13,17 @@ app.get("/",function(req,res){
 
 app.post("/addname",  async function(req,res){
     const id = uuid();
-    const names = req.body.name;
+    const names = req.body;
     console.log(names);
     console.log(id);
     res.send("success");
-    await fs.mkdir()
+
     
 });
 app.get("/names/:id",function(req,res){
 
-    res.send(req.body.params);
+    res.send(req.body);
+    console.log(res.body);
     
 
 })
