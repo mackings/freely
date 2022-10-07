@@ -12,12 +12,13 @@ const posts = [];
 
 
 app.get("/",function(req,res){
-    res.send("Server is up and Running");
+    res.send("Server true");
 });
 
 app.post("/addpost", async function(req,res){
 
     await  posts.push(req.body);
+    res.send("Post Added");
 });
 
 
