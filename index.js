@@ -14,11 +14,12 @@ const posts = [];
 
 
 app.get("/",function(req,res){
-    res.send("Server true");
+    res.send("Server running");
 });
 
 app.post("/addpost", function(req,res){
     res.send(req.body);
+    console.log(req.body);
 
 });
 
