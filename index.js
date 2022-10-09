@@ -1,7 +1,6 @@
 const express = require ("express");
 const app = express();
 const {v4: uuid } = require("uuid");
-const fs = require("fs/promises");
 const path = require("path");
 require ("dotenv").config;
 
@@ -18,11 +17,10 @@ app.get("/",function(req,res){
     res.send("Server running");
 });
 
+
 app.post("/addpost", async function(req,res){
     res.send(req.body);
-    console.log(req.body);
-
-    await posts.push(req.body)
+    //await posts.push(req.body)
     res.send("Post Updated");
     //res.sendStatus(200).statusMessage("Post Uploaded");
 
