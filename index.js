@@ -22,7 +22,8 @@ app.post("/addpost", async function(req,res){
     console.log(req.body);
 
     await posts.push(req.body)
-    res.send("Succesfully added post")
+    res.json("Sent Successfully");
+    res.sendStatus(200).statusMessage("Post Uploaded");
 
 });
 
