@@ -17,9 +17,12 @@ app.get("/",function(req,res){
     res.send("Server running");
 });
 
-app.post("/addpost", function(req,res){
+app.post("/addpost", async function(req,res){
     res.send(req.body);
     console.log(req.body);
+
+    await posts.push(req.body)
+    res.send("Succesfully added post")
 
 });
 
