@@ -2,6 +2,7 @@ const express = require ("express");
 const app = express();
 const {v4: uuid } = require("uuid");
 const fs = require("fs/promises");
+const path = require("path");
 require ("dotenv").config;
 
 const bodyParser = require("body-parser");
@@ -22,8 +23,8 @@ app.post("/addpost", async function(req,res){
     console.log(req.body);
 
     await posts.push(req.body)
-    res.json("Sent Successfully");
-    res.sendStatus(200).statusMessage("Post Uploaded");
+    res.send("Post Updated");
+    //res.sendStatus(200).statusMessage("Post Uploaded");
 
 });
 
