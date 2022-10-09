@@ -20,7 +20,7 @@ app.get("/",function(req,res){
 
 app.post("/addpost", async function(req,res){
     res.send(req.body);
-    //await posts.push(req.body)
+    await posts.push(req.body)
     res.send("Post Updated");
     //res.sendStatus(200).statusMessage("Post Uploaded");
 
