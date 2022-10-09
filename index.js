@@ -3,10 +3,12 @@ const app = express();
 const {v4: uuid } = require("uuid");
 const fs = require("fs/promises");
 require ("dotenv").config;
-const Task = require("./database/db");
+
+const bodyParser = require("body-parser");
 
 app.use(express.urlencoded({extended:true}));
 app.use(express.json());
+app.use(bodyParser.urlencoded({extended:true}));
 
 const posts = [];
 
@@ -15,34 +17,17 @@ app.get("/",function(req,res){
     res.send("Server true");
 });
 
-app.post("/addpost", async function(req,res){
+app.post("/addpost", function(req,res){
+    res.send(req.body);
 
-    await  posts.push(req.body);
-    res.send("Post Added");
 });
 
 
 app.get("/allpost", async function(req,res){
-    res.send(posts);
+    res.send(posts.body);
 });
 
 
-app.post("/addname",  async function(req,res){
-    const id = uuid();
-    const names = req.body;
-    console.log(names);
-    console.log(id);
-    res.send("success");
-
-    
-});
-app.get("/names/:id",function(req,res){
-
-    res.send(req.body);
-    console.log(res.body);
-    
-
-})
 
 
 
