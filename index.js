@@ -6,13 +6,14 @@ require ("dotenv").config;
 const Mongoclient = require("mongodb").MongoClient
 const mongoose = require('mongoose');
 const dsch = require("./database/db");
-const Usermodel = require("./database/db")
+const Umodel = require("./database/db")
 
 const bodyParser = require("body-parser");
 
 app.use(express.urlencoded({extended:true}));
 app.use(express.json());
 app.use(bodyParser.urlencoded({extended:true}));
+app.use(bodyParser.json())
 
 const db = mongoose.connect("mongodb+srv://Macs:Macs@cluster0.janfev1.mongodb.net/?retryWrites=true&w=majority",{
     useNewUrlParser: true,
@@ -31,17 +32,18 @@ app.get("/",function (req,res){
 
 app.post("/Upload",function (req,res){
 
-    let newpost = Usermodel({
-        name: req.body.name,
-        email: req.body.email
+    const upload = new Umodel({
+        name:req.body.name,
+        email:req.body.email
+
     });
 
+    upload.save();
 
+    
 
-    newpost.save();
-    console.log(req.body);
-
-    res.json({message:"Upload successful"})
+    res.json({message:"Upload Successful"});
+    console.log(name);
 
     
 
@@ -50,18 +52,6 @@ app.post("/Upload",function (req,res){
 });
 
 
-app.post("/addpost", async function(req,res){
-    res.send(req.body);
-    await posts.push(req.body)
-    res.send("Post Updated");
-    const add = dsch.add(req.body, function (){
-        res.send("Post Added");
-        console.log(add);
-
-    })
-
-
-});
 
 
 app.get("/allpost", async function(req,res){
