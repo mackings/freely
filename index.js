@@ -4,6 +4,9 @@ const {v4: uuid } = require("uuid");
 const path = require("path");
 require ("dotenv").config;
 const Mongoclient = require("mongodb").MongoClient
+const mongoose = require('mongoose');
+const dsch = require("./database/db");
+const Usermodel = require("./database/db")
 
 const bodyParser = require("body-parser");
 
@@ -11,13 +14,36 @@ app.use(express.urlencoded({extended:true}));
 app.use(express.json());
 app.use(bodyParser.urlencoded({extended:true}));
 
-const posts = [];
-const dburl = process.env.DBURL
+const db = mongoose.connect("mongodb+srv://Macs:Macs@cluster0.janfev1.mongodb.net/?retryWrites=true&w=majority",{
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+
+}).then(()=>{
+    console.log("Mongoclient")
+
+});
 
 
-
-app.get("/",function(req,res){
+app.get("/",function (req,res){
     res.send("Server Build successful");
+});
+
+
+app.post("Upload",function (req,res){
+
+    const newpost = Usermodel({
+        name: req.body.name,
+        email: req.body.email
+    });
+
+
+
+    newpost.save();
+
+    
+
+
+
 });
 
 
@@ -25,6 +51,12 @@ app.post("/addpost", async function(req,res){
     res.send(req.body);
     await posts.push(req.body)
     res.send("Post Updated");
+    const add = dsch.add(req.body, function (){
+        res.send("Post Added");
+        console.log(add);
+
+    })
+
 
 });
 

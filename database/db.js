@@ -1,9 +1,17 @@
  const mongoose = require('mongoose');
 
- const Task = mongoose.Schema({
-    title:String,
-    description:String
- })
+const dbschema = mongoose.Schema({
 
 
- module.exports = ("Task", mongoose);
+  name:{
+    type:String,
+    required:true
+  },
+  email:{
+    type:String,
+    required:true
+  }
+})
+
+
+module.exports = mongoose.model("User", dbschema);
