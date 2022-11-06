@@ -29,7 +29,7 @@ app.get("/",function (req,res){
 });
 
 
-app.post("Upload",function (req,res){
+app.post("/Upload",function (req,res){
 
     const newpost = Usermodel({
         name: req.body.name,
@@ -39,6 +39,8 @@ app.post("Upload",function (req,res){
 
 
     newpost.save();
+
+    res.json({message:"Upload successful"})
 
     
 
