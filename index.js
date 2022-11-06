@@ -30,7 +30,7 @@ app.get("/",function (req,res){
 });
 
 
-app.post("/Upload",function (req,res){
+app.post("/upload",function (req,res){
 
     const upload = new Umodel({
         name:req.body.name,
@@ -43,25 +43,8 @@ app.post("/Upload",function (req,res){
     
 
     res.json({message:"Upload Successful"});
-    console.log(name);
-
-    
-
-
 
 });
-
-
-
-
-app.get("/allpost", async function(req,res){
-    res.send(posts.body);
-});
-
-
-
-
-
 
 
 const port = process.env.PORT || 5000
