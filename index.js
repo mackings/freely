@@ -30,6 +30,8 @@ app.get("/",function (req,res){
 });
 
 
+//post endpoint
+
 app.post("/upload",function (req,res){
 
     const upload = new Umodel({
