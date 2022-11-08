@@ -45,6 +45,7 @@ app.post("/upload",function (req,res){
     
 
     res.json({message:"Upload Successful"});
+    console.log(req.body);
 
 });
 
