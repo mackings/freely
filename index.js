@@ -39,7 +39,16 @@ app.post('/sendemail',function(req ,res){
 
     });
 
-    res.send('Email sent');
+    msg.send(function(error){
+        if (error) {
+            console.log(error)
+            
+        } else {
+            res.send('Email sent');
+            
+        }
+
+    });
 
 
 });
