@@ -26,7 +26,7 @@ const db = mongoose.connect("mongodb+srv://Macs:Macs@cluster0.janfev1.mongodb.ne
 
 
 app.get("/",function (req,res){
-    res.send("Server Build successfuls");
+    res.send("Server Build successfully");
 });
 
 
