@@ -7,6 +7,7 @@ const Mongoclient = require("mongodb").MongoClient
 const mongoose = require('mongoose');
 const dsch = require("./database/db");
 const Umodel = require("./database/db")
+const mail = require('email');
 
 const bodyParser = require("body-parser");
 
@@ -27,6 +28,20 @@ const db = mongoose.connect("mongodb+srv://Macs:Macs@cluster0.janfev1.mongodb.ne
 
 app.get("/",function (req,res){
     res.send("Server Build successfully");
+});
+
+app.post('/sendemail',function(req ,res){
+
+    const msg = new email({      
+        to: "macsonline500@gmail.com"
+        , subject: "Knock knock..."
+        , body: "Who's there?"
+
+    });
+
+    res.send('Email sent');
+
+
 });
 
 
