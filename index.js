@@ -7,7 +7,6 @@ const Mongoclient = require("mongodb").MongoClient
 const mongoose = require('mongoose');
 const dsch = require("./database/db");
 const Umodel = require("./database/db")
-const mail = require('email');
 
 const bodyParser = require("body-parser");
 
@@ -30,22 +29,7 @@ app.get("/",function (req,res){
     res.send("Server Build successfully");
 });
 
-app.post('/sendemail',function(req ,res){
-    const mail = req.body;
 
-    const msg = new email({      
-        to: mail
-        , subject: "Knock knock..."
-        , body: "Who's there?"
-
-    });
-
-    msg.send();
-
-   
-
-
-});
 
 
 //post endpoint
