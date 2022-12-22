@@ -31,24 +31,18 @@ app.get("/",function (req,res){
 });
 
 app.post('/sendemail',function(req ,res){
+    const mail = req.body;
 
     const msg = new email({      
-        to: "macsonline500@gmail.com"
+        to: mail
         , subject: "Knock knock..."
         , body: "Who's there?"
 
     });
 
-    msg.send(function(error){
-        if (error) {
-            console.log(error)
-            
-        } else {
-            res.send('Email sent');
-            
-        }
+    msg.send();
 
-    });
+   
 
 
 });
